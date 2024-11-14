@@ -8,40 +8,19 @@ const userInput = prompt("Enter a list of froyo flavors, seperated by commas:");
 
 // const userInput = "vanilla,vanilla,vanilla,strawberry,coffee,coffee";
 
-const flavors = userInput.split (",");
+const cleanData = userInput.split (",");
 
 
-// const createFlavorObject = (key, value) => {
-//     const obj = {};
-//     obj[key] = value;
-//     return obj;
-// }
+const froyo = {};
 
-// const flavorObject = createFlavorObject("flavor", flavors[0]);
+for (const index in cleanData) {
+  const flavor = cleanData[index];
 
+  if (froyo[flavor]) {
+    froyo[flavor] += 1;
+  } else {
+    froyo[flavor] = 1;
+  }
+}
 
-// const flavorsArr = [];
-
-// for (let i = 0; i < flavors.length; i++) {
-//   const flavorKey = `flavors ${i + 1}`;
-//   const flavorObj = createFlavorObject(flavorKey, flavors[i]);
-//   flavorsArr.push(flavorObj);
-// }
-
-
-// console.log(flavorsArr);
-
-
-const flavorCount = {};
-
-flavors.forEach(flavor => {
-    if (flavorCount[flavor]) {
-        flavorCount[flavor] += 1;
-    } else {
-        flavorCount[flavor] = 1;
-    }
-});
-
-console.table(flavorCount);
-
-// for loop - if this key exsist add it to 1, if else set it to 1
+console.log(froyo);
